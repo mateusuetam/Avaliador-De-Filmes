@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Filmes</title>
+    </head>
+    <body>
+
+        <h1>Filmes</h1>
+
+        <p>
+            <a th:href="@{/}">Início</a>
+            |
+            <a th:href="@{/filmes/novo}">Cadastrar filme</a>
+            |
+            <a th:href="@{/analises}">Ver análises</a>
+        </p>
+
+        <div th:if="${#lists.isEmpty(filmes)}">
+            <p>Nenhum filme cadastrado.</p>
+        </div>
+
+        <table th:unless="${#lists.isEmpty(filmes)}" border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Diretor</th>
+                    <th>Ano</th>
+                    <th>Assistido</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="filme : ${filmes}">
+                    <td th:text="${filme.id}"></td>
+                    <td th:text="${filme.titulo}"></td>
+                    <td th:text="${filme.diretor}"></td>
+                    <td th:text="${filme.anoLancamento}"></td>
+                    <td th:text="${filme.assistido ? 'Sim' : 'Não'}"></td>
+                    <td>
+                        <a th:href="@{/analises/nova(filmeId=${filme.id})}"> Adicionar análise </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </body>
+</html>

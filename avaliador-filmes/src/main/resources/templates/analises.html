@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Análises</title>
+    </head>
+    <body>
+
+        <h1>Análises</h1>
+
+        <p>
+            <a th:href="@{/}">Início</a>
+            |
+            <a th:href="@{/filmes}">Filmes</a>
+        </p>
+
+        <div th:if="${#lists.isEmpty(analises)}">
+            <p>Nenhuma análise cadastrada.</p>
+        </div>
+
+        <table th:unless="${#lists.isEmpty(analises)}" border="1">
+            <thead>
+                <tr>
+                    <th>Filme</th>
+                    <th>Nota</th>
+                    <th>Comentário</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="analise : ${analises}">
+                    <td th:text="${analise.filme.titulo}"></td>
+                    <td th:text="${analise.nota}"></td>
+                    <td th:text="${analise.comentario}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </body>
+</html>
