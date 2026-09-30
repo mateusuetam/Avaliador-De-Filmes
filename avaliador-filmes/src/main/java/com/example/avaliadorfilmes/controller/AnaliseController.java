@@ -2,7 +2,8 @@ package com.example.avaliadorfilmes.controller;
 
 import com.example.avaliadorfilmes.model.Analise;
 import com.example.avaliadorfilmes.model.Filme;
-import com.example.avaliadorfilmes.service.MemoriaService;
+import com.example.avaliadorfilmes.repository.AnaliseRepository;
+import com.example.avaliadorfilmes.repository.FilmeRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,22 +16,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/analises")
 public class AnaliseController {
 
-    private final MemoriaService memoriaService;
+    private final AnaliseRepository analiseRepository;
+    private final FilmeRepository filmeRepository;
 
-    public AnaliseController(MemoriaService memoriaService) {
-        this.memoriaService = memoriaService;
+    public AnaliseController(AnaliseRepository analiseRepository, FilmeRepository filmeRepository) {
+        this.analiseRepository = analiseRepository;
+        this.filmeRepository = filmeRepository;
     }
 
     @GetMapping
     public String listarAnalises(Model model) {
-        model.addAttribute("analises", memoriaService.listarAnalises());
+        model.addAttribute("analises", analiseRepository.findAll());
         return "analises";
     }
 
     @GetMapping("/nova")
     public String novaAnalise(@RequestParam Long filmeId, Model model) {
 
-        Filme filme = memoriaService.buscarFilmePorId(filmeId);
+        Filme filme = filmeRepository.findById(filmeId).orElse(null);
 
         if (filme == null) {
             return "redirect:/filmes";
@@ -45,14 +48,16 @@ public class AnaliseController {
     @PostMapping
     public String cadastrarAnalise(@RequestParam Long filmeId, @ModelAttribute Analise analise) {
 
-        Filme filme = memoriaService.buscarFilmePorId(filmeId);
+        Filme filme = filmeRepository.findById(filmeId).orElse(null);
 
         if (filme == null) {
             return "redirect:/filmes";
         }
 
+        analise.setId(null);
         analise.setFilme(filme);
-        memoriaService.adicionarAnalise(analise);
+
+        analiseRepository.save(analise);
 
         return "redirect:/analises";
     }

@@ -1,7 +1,7 @@
 package com.example.avaliadorfilmes.controller;
 
 import com.example.avaliadorfilmes.model.Filme;
-import com.example.avaliadorfilmes.service.MemoriaService;
+import com.example.avaliadorfilmes.repository.FilmeRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,27 +13,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/filmes")
 public class FilmeController {
 
-    private final MemoriaService memoriaService;
+    private final FilmeRepository filmeRepository;
 
-    public FilmeController(MemoriaService memoriaService) {
-        this.memoriaService = memoriaService;
+    public FilmeController(FilmeRepository filmeRepository) {
+        this.filmeRepository = filmeRepository;
     }
 
     @GetMapping
     public String listarFilmes(Model model) {
-        model.addAttribute("filmes", memoriaService.listarFilmes());
+        model.addAttribute("filmes", filmeRepository.findAll());
+
         return "filmes";
     }
 
     @GetMapping("/novo")
     public String novoFilme(Model model) {
         model.addAttribute("filme", new Filme());
+
         return "filme-form";
     }
 
     @PostMapping
     public String cadastrarFilme(@ModelAttribute Filme filme) {
-        memoriaService.adicionarFilme(filme);
+        filme.setId(null);
+        filmeRepository.save(filme);
+
         return "redirect:/filmes";
     }
 }
