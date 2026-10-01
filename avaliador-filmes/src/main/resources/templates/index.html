@@ -2,18 +2,29 @@
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Avaliador de Filmes</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
     </head>
     <body>
 
-        <h1>Avaliador de Filmes</h1>
-        <p>Bem-vindo(a)!</p>
+        <header class="cabecalho">
+            <h1>Avaliador de Filmes</h1>
+            <p>Sistema de cadastro e análise de filmes</p>
+        </header>
 
-        <nav>
-            <a th:href="@{/filmes}">Filmes</a>
-            |
-            <a th:href="@{/analises}">Análises</a>
-        </nav>
+        <main class="container">
+            <section class="menu-principal">
+                <a class="menu-card" th:href="@{/filmes}">
+                    <h2>Filmes</h2>
+                    <p>Cadastrar, visualizar, editar e remover filmes.</p>
+                </a>
+                <a class="menu-card" th:href="@{/analises}">
+                    <h2>Análises</h2>
+                    <p>Cadastrar, visualizar, editar e remover análises.</p>
+                </a>
+            </section>
+        </main>
 
     </body>
 </html>

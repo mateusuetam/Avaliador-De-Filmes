@@ -1,0 +1,153 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f4f4;
+    color: #222;
+}
+
+.cabecalho {
+    padding: 30px;
+    background: #222;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    width: min(1100px, 92%);
+    margin: 30px auto;
+}
+
+.menu-principal {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.menu-card {
+    display: block;
+    padding: 25px;
+    background: white;
+    color: #222;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu-card:hover {
+    transform: translateY(-2px);
+}
+
+.pagina-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.botao {
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    padding: 9px 14px;
+    cursor: pointer;
+    text-decoration: none;
+    background: #333;
+    color: white;
+}
+
+.botao:hover {
+    opacity: 0.85;
+}
+
+.formulario {
+    background: white;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.campo input, .campo textarea, .campo select {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+}
+
+.campo input[type="checkbox"] {
+    width: auto;
+    padding: 0;
+    margin-right: 5px;
+}
+
+.tabela-container {
+    overflow-x: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #eee;
+}
+
+.acoes {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.botao-editar {
+    background: #555;
+}
+
+.botao-excluir {
+    background: #a33;
+}
+
+.mensagem {
+    display: none;
+    margin-bottom: 20px;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.mensagem.sucesso {
+    background: #d9f2d9;
+    color: #185c18;
+}
+
+.mensagem.erro {
+    background: #f5d4d4;
+    color: #7a1616;
+}
+
+.oculto {
+    display: none;
+}
