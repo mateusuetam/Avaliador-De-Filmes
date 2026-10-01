@@ -10,6 +10,12 @@
 
         <header class="cabecalho">
             <h1>Gerenciamento de Filmes</h1>
+            <button
+                id="alternarTema"
+                class="botao botao-tema">
+                <span class="icone-tema">☾</span>
+                <span class="texto-tema">Tema escuro</span>
+            </button>
         </header>
 
         <main class="container">
@@ -90,5 +96,6 @@
         </main>
         <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
         <script th:src="@{/js/filmes.js}"></script>
+        <script th:src="@{/js/theme.js}"></script>
     </body>
 </html>

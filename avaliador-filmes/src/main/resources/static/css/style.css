@@ -10,6 +10,7 @@ body {
 }
 
 .cabecalho {
+    position: relative;
     padding: 30px;
     background: #222;
     color: white;
@@ -150,4 +151,57 @@ th {
 
 .oculto {
     display: none;
+}
+
+.botao-tema {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+}
+
+body.tema-escuro {
+    background: #181818;
+    color: #eeeeee;
+}
+
+body.tema-escuro .menu-card {
+    background: #252525;
+    color: #eeeeee;
+}
+
+body.tema-escuro .formulario {
+    background: #252525;
+}
+
+body.tema-escuro .tabela-container {
+    background: #252525;
+}
+
+body.tema-escuro th {
+    background: #333333;
+}
+
+body.tema-escuro th,
+body.tema-escuro td {
+    border-color: #444444;
+}
+
+body.tema-escuro .campo input,
+body.tema-escuro .campo textarea,
+body.tema-escuro .campo select {
+    background: #333333;
+    color: #eeeeee;
+    border-color: #555555;
+}
+
+body.tema-escuro .campo input[type="checkbox"] {
+    accent-color: #eeeeee;
+}
+
+body.tema-escuro .menu-card:hover {
+    background: #2d2d2d;
 }

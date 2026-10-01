@@ -11,6 +11,12 @@
         <header class="cabecalho">
             <h1>Avaliador de Filmes</h1>
             <p>Sistema de cadastro e análise de filmes</p>
+            <button
+                id="alternarTema"
+                class="botao botao-tema">
+                <span class="icone-tema">☾</span>
+                <span class="texto-tema">Tema escuro</span>
+            </button>
         </header>
 
         <main class="container">
@@ -25,6 +31,7 @@
                 </a>
             </section>
         </main>
-
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+        <script th:src="@{/js/theme.js}"></script>
     </body>
 </html>
